@@ -89,12 +89,16 @@ a {
     --silver: #bfc0c0;
     --white: #ffffff;
     --orange: #ef8354;
+    --green-dark: #81f77d;
+    --green-light: #9fff9c;
+    --red-dark: #ff9c9c;
+    --red-light: #f78585;
 }
 
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
 
     color: var(--white);
     background-color: var(--blue);
@@ -105,6 +109,11 @@ body {
     flex-direction: column;
 
     min-height: 100vh;
+}
+
+[class*="__container"] {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .header {
@@ -120,18 +129,58 @@ body {
 }
 
 .main {
+    padding: 15px;
     flex: 1;
+}
+
+.main__book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-auto-flow: column;
+}
+
+.card {
+    background-color: var(--dark-blue);
+    padding: 30px;
+    display: grid;
+    gap: 10px;
+    place-content: center;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.card__read {
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.card__read--read {
+    background-color: var(--green-light);
+}
+
+.card__read--read:hover {
+    background-color: var(--green-dark);
+}
+
+.card__read--not-read {
+    background-color: var(--red-dark);
+}
+
+.card__read--not-read:hover {
+    background-color: var(--red-light);
 }
 
 .footer {
     background-color: var(--dark-blue);
-    font-size: 18px;
 
     min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .footer__link {
