@@ -178,7 +178,8 @@ body {
     font-weight: 600;
 }
 
-.card__read {
+.card__read,
+.card__remove {
     display: block;
     width: 100%;
     outline: none;

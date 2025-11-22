@@ -40,6 +40,18 @@ booksList.addEventListener("click", (e) => {
         e.target.classList.remove("card__read--not-read");
         e.target.classList.add("card__read--read");
         e.target.textContent = "Read";
+    } else if (e.target.classList.contains("card__remove")) {
+        for (let i = 0; i < myLibrary.length; i++) {
+            if (e.target.attributes[1].value === myLibrary[i].id) {
+                console.log(e.target);
+                myLibrary.splice(i, 1);
+
+                const cardsContainer =
+                    document.querySelector(".main__book-list");
+                clearScreen(cardsContainer);
+                displayBooks(cardsContainer);
+            }
+        }
     }
 });
 
@@ -75,6 +87,11 @@ function displayBooks(cardsContainer) {
         const cardRead = document.createElement("button");
         cardRead.classList.add("card__read");
 
+        const cardRemove = document.createElement("button");
+        cardRemove.classList.add("card__remove");
+        cardRemove.textContent = "Remove";
+        cardRemove.setAttribute("data-index-number", book.id);
+
         if (book.read) {
             cardRead.textContent = "Read";
             cardRead.classList.add("card__read--read");
@@ -83,7 +100,7 @@ function displayBooks(cardsContainer) {
             cardRead.classList.add("card__read--not-read");
         }
 
-        card.append(cardTitle, cardAuthor, cardPages, cardRead);
+        card.append(cardTitle, cardAuthor, cardPages, cardRead, cardRemove);
         cardsContainer.appendChild(card);
     }
 }
