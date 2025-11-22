@@ -1,6 +1,9 @@
 const dialog = document.querySelector(".main__dialog");
 const newBookButton = document.querySelector(".main__button");
 const submitButton = document.querySelector(".form__submit");
+const booksList = document.querySelector(".main__book-list");
+
+const myLibrary = [];
 
 newBookButton.addEventListener("click", () => {
     dialog.showModal();
@@ -28,7 +31,17 @@ submitButton.addEventListener("click", (event) => {
     }
 });
 
-const myLibrary = [];
+booksList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("card__read--read")) {
+        e.target.classList.remove("card__read--read");
+        e.target.classList.add("card__read--not-read");
+        e.target.textContent = "Not read";
+    } else if (e.target.classList.contains("card__read--not-read")) {
+        e.target.classList.remove("card__read--not-read");
+        e.target.classList.add("card__read--read");
+        e.target.textContent = "Read";
+    }
+});
 
 function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
