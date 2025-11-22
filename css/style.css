@@ -93,6 +93,7 @@ a {
     --green-light: #9fff9c;
     --red-dark: #ff9c9c;
     --red-light: #f78585;
+    --gray: #343744;
 }
 
 body {
@@ -133,7 +134,28 @@ body {
     flex: 1;
 }
 
+.main__button {
+    display: block;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.button:hover {
+    background-color: var(--gray);
+}
+
 .main__book-list {
+    padding: 15px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 330px);
     justify-content: center;
