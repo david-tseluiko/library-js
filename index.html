@@ -16,6 +16,41 @@
             <main class="main">
                 <div class="main__container">
                     <button class="main__button button">New Book</button>
+                    <dialog class="main__dialog">
+                        <form class="main__form form" action="#">
+                            <h2 class="form__main-title">Add new book</h2>
+                            <input
+                                class="form__input"
+                                placeholder="Title"
+                                type="text"
+                            />
+                            <input
+                                class="form__input"
+                                placeholder="Author"
+                                type="text"
+                            />
+                            <input
+                                class="form__input"
+                                placeholder="Pages"
+                                type="number"
+                            />
+
+                            <div class="form__read">
+                                <label class="form__is-read-label" for="is-read"
+                                    >Have you read it?</label
+                                >
+                                <input
+                                    class="form__is-read-checkbox"
+                                    type="checkbox"
+                                    id="is-read"
+                                />
+                            </div>
+
+                            <button class="form__submit" type="submit">
+                                Submit
+                            </button>
+                        </form>
+                    </dialog>
                     <div class="main__book-list"></div>
                 </div>
             </main>
