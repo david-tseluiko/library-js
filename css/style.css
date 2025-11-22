@@ -186,6 +186,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     transition: 0.3s all ease;
+    padding: 5px;
 }
 
 .card__read--read {
@@ -233,8 +234,6 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.main__form {
-}
 .form {
     display: flex;
     flex-direction: column;

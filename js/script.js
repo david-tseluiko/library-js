@@ -8,7 +8,24 @@ newBookButton.addEventListener("click", () => {
 
 submitButton.addEventListener("click", (event) => {
     event.preventDefault();
-    dialog.close();
+
+    const cardsContainer = document.querySelector(".main__book-list");
+    const inputs = document.querySelectorAll(".form__input");
+    const isRead = document.querySelector(".form__is-read-checkbox");
+
+    if (validateForm(inputs)) {
+        addBookToLibrary(
+            inputs[0].value,
+            inputs[1].value,
+            inputs[2].value,
+            isRead.checked
+        );
+
+        clearScreen(cardsContainer);
+        displayBooks(cardsContainer);
+        clearForm(inputs, isRead);
+        dialog.close();
+    }
 });
 
 const myLibrary = [];
@@ -25,9 +42,7 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
 }
 
-function displayBooks() {
-    const cardsContainer = document.querySelector(".main__book-list");
-
+function displayBooks(cardsContainer) {
     for (book of myLibrary) {
         const card = document.createElement("div");
         card.classList.add("main__card", "card");
@@ -60,7 +75,25 @@ function displayBooks() {
     }
 }
 
-addBookToLibrary("War and Peace", "Lev Tolstoy", "1500", true);
-addBookToLibrary("Crime and punishment", "Fyodor Dostoevsky", "400", false);
+function clearScreen(cardsContainer) {
+    cardsContainer.innerHTML = "";
+}
 
-displayBooks();
+function validateForm(inputs) {
+    for (input of inputs) {
+        if (input.value.trim().length === 0) {
+            alert(`${input.placeholder} field is empty, please fill that out.`);
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function clearForm(inputs, isRead) {
+    for (input of inputs) {
+        input.value = "";
+    }
+
+    isRead.checked = false;
+}
